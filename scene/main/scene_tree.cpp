@@ -1884,8 +1884,7 @@ bool SceneTree::is_multiplayer_poll_enabled() const {
 
 Signal SceneTree::delay(double p_seconds)
 {
-	ERR_FAIL_COND_V(!is_inside_tree(), Signal());
-	Ref<SceneTreeTimer> timer = get_tree()->create_timer(p_seconds);
+	Ref<SceneTreeTimer> timer = create_timer(p_seconds);
     ERR_FAIL_COND_V(timer.is_null(), Signal());
 	return Signal(timer.ptr(), "timeout");
 }

@@ -255,7 +255,6 @@
 		</method>
 		<method name="delay">
 			<return type="signal">
-			<param index="0" name="p_seconds" type="float" />
 			<description>
 				Waits for the specified number of seconds using the [SceneTree] timer system.
 
@@ -268,6 +267,11 @@
 
 				This method returns after the timer times out.
 			</description>
+			<params>
+				<param name="p_seconds" type="float">
+					The time to wait in seconds.
+				</param>
+			</params>
 		</method>
 	</methods>
 	<members>
