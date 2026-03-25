@@ -1035,6 +1035,17 @@
 				Refreshes the warnings displayed for this node in the Scene dock. Use [method _get_configuration_warnings] to customize the warning messages to display.
 			</description>
 		</method>
+		<method name="delay" qualifiers="virtual">
+			<return type="signal" />
+			<description>
+				Called in front of an [await] function on the [SceneTree] to wait an inputed amount of time. It runs the following function in the background:
+				[codeblocks]
+				[gdscript]
+				get_tree().create_timer(p_seconds).timeout
+				[/gdscript]
+				[/codeblocks]
+			</description>
+		</method>
 	</methods>
 	<members>
 		<member name="auto_translate_mode" type="int" setter="set_auto_translate_mode" getter="get_auto_translate_mode" enum="Node.AutoTranslateMode" default="0">

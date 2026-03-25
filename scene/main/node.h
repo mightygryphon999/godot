@@ -731,6 +731,8 @@ public:
 	void remap_nested_resources(Ref<Resource> p_resource, HashMap<Ref<Resource>, Ref<Resource>> &p_resource_remap) const;
 #endif
 
+	Signal delay(double p_seconds);
+
 	// used by editors, to save what has changed only
 	void set_scene_instance_state(const Ref<SceneState> &p_state);
 	Ref<SceneState> get_scene_instance_state() const;
