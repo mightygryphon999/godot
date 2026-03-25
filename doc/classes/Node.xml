@@ -1038,7 +1038,7 @@
 		<method name="delay" qualifiers="virtual">
 			<return type="signal" />
 			<description>
-				Called in front of an [await] function on the [SceneTree] to wait an inputed amount of time. It runs the following function in the background:
+				Called in front of the await function on the [SceneTree] to wait an inputed amount of time. It runs the following function in the background:
 				[codeblocks]
 				[gdscript]
 				get_tree().create_timer(p_seconds).timeout
