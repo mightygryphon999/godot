@@ -1035,15 +1035,20 @@
 				Refreshes the warnings displayed for this node in the Scene dock. Use [method _get_configuration_warnings] to customize the warning messages to display.
 			</description>
 		</method>
-		<method name="delay" qualifiers="virtual">
-			<return type="signal" />
+		<method name="delay">
+			<return type="signal">
+			<param index="0" name="p_seconds" type="float" />
 			<description>
-				Called in front of the await function on the [SceneTree] to wait an inputed amount of time. It runs the following function in the background:
+				Waits for the specified number of seconds using the [SceneTree] timer system.
+
+				This is equivalent to:
 				[codeblocks]
 				[gdscript]
-				get_tree().create_timer(p_seconds).timeout
+				await get_tree().create_timer(p_seconds).timeout
 				[/gdscript]
 				[/codeblocks]
+
+				This method returns after the timer times out.
 			</description>
 		</method>
 	</methods>
@@ -1170,6 +1175,11 @@
 			</description>
 		</signal>
 	</signals>
+	<params>
+		<param name="p_seconds" type="float">
+			The time to wait in seconds.
+		</param>
+	</params>
 	<constants>
 		<constant name="NOTIFICATION_ENTER_TREE" value="10">
 			Notification received when the node enters a [SceneTree]. See [method _enter_tree].
