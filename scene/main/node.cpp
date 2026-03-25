@@ -3745,14 +3745,6 @@ RID Node::get_accessibility_element() const {
 	return data.accessibility_element;
 }
 
-Signal Node::delay(double p_seconds)
-{
-	ERR_FAIL_COND_V(!is_inside_tree(), Signal());
-	Ref<SceneTreeTimer> timer = get_tree()->create_timer(p_seconds);
-    ERR_FAIL_COND_V(timer.is_null(), Signal());
-	return Signal(timer.ptr(), "timeout");
-}
-
 void Node::_bind_methods() {
 	GLOBAL_DEF(PropertyInfo(Variant::INT, "editor/naming/node_name_num_separator", PROPERTY_HINT_ENUM, "None,Space,Underscore,Dash"), 0);
 	GLOBAL_DEF(PropertyInfo(Variant::INT, "editor/naming/node_name_casing", PROPERTY_HINT_ENUM, "PascalCase,camelCase,snake_case,kebab-case"), NAME_CASING_PASCAL_CASE);
@@ -3892,8 +3884,6 @@ void Node::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("atr", "message", "context"), &Node::atr, DEFVAL(""));
 	ClassDB::bind_method(D_METHOD("atr_n", "message", "plural_message", "n", "context"), &Node::atr_n, DEFVAL(""));
-
-	ClassDB::bind_method(D_METHOD("delay", "seconds"), &Node::delay);
 
 #ifdef TOOLS_ENABLED
 	ClassDB::bind_method(D_METHOD("_set_property_pinned", "property", "pinned"), &Node::set_property_pinned);

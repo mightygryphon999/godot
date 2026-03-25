@@ -265,6 +265,8 @@ private:
 		MAX_IDLE_CALLBACKS = 256
 	};
 
+	Signal delay(double p_seconds);
+
 	static IdleCallback idle_callbacks[MAX_IDLE_CALLBACKS];
 	static int idle_callback_count;
 	void _call_idle_callbacks();

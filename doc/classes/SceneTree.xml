@@ -253,6 +253,22 @@
 				If a current scene is loaded, calling this method will unload it.
 			</description>
 		</method>
+		<method name="delay">
+			<return type="signal">
+			<param index="0" name="p_seconds" type="float" />
+			<description>
+				Waits for the specified number of seconds using the [SceneTree] timer system.
+
+				This is equivalent to:
+				[codeblocks]
+				[gdscript]
+				await get_tree().create_timer(p_seconds).timeout
+				[/gdscript]
+				[/codeblocks]
+
+				This method returns after the timer times out.
+			</description>
+		</method>
 	</methods>
 	<members>
 		<member name="auto_accept_quit" type="bool" setter="set_auto_accept_quit" getter="is_auto_accept_quit" default="true">

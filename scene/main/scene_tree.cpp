@@ -1882,6 +1882,14 @@ bool SceneTree::is_multiplayer_poll_enabled() const {
 	return multiplayer_poll;
 }
 
+Signal SceneTree::delay(double p_seconds)
+{
+	ERR_FAIL_COND_V(!is_inside_tree(), Signal());
+	Ref<SceneTreeTimer> timer = get_tree()->create_timer(p_seconds);
+    ERR_FAIL_COND_V(timer.is_null(), Signal());
+	return Signal(timer.ptr(), "timeout");
+}
+
 void SceneTree::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_root"), &SceneTree::get_root);
 	ClassDB::bind_method(D_METHOD("has_group", "name"), &SceneTree::has_group);
@@ -1919,6 +1927,8 @@ void SceneTree::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("is_physics_interpolation_enabled"), &SceneTree::is_physics_interpolation_enabled);
 
 	ClassDB::bind_method(D_METHOD("queue_delete", "obj"), &SceneTree::queue_delete);
+
+	ClassDB::bind_method(D_METHOD("delay", "seconds"), &SceneTree::delay);
 
 	MethodInfo mi;
 	mi.name = "call_group_flags";
